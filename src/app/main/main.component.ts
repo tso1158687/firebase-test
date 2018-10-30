@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -8,7 +9,10 @@ import { DataService } from '../data.service';
 })
 export class MainComponent implements OnInit {
   data;
-  constructor(private service: DataService) { }
+  items: Observable<any[]>;
+  constructor(db: AngularFireDatabase, private service: DataService) {
+    this.items = db.list('item').valueChanges();
+  }
 
   ngOnInit() {
     this.service.get().subscribe(e => this.data = e);
