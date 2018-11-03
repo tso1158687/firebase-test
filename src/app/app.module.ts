@@ -11,12 +11,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { StorageComponent } from './storage/storage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    AuthComponent
+    AuthComponent,
+    StorageComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FormsModule
   ],
   providers: [],
